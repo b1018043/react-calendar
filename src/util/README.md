@@ -1,5 +1,5 @@
 # 汎用関数仕様一覧
-## calcDayOfWeek
+## getDayOfWeek
 ### 引数
 * y:年(number)
 * m:月(number)
