@@ -9,15 +9,7 @@ const useStyle=makeStyles(theme=>({
         "&:hover":{
             background:colors.grey[200],
         },
-        [theme.breakpoints.down("sm")]:{
-            width: "40px",
-        },
-        [theme.breakpoints.between("sm","md")]:{
-            width: "100px",
-        },
-        [theme.breakpoints.up('md')]:{
-            width: "150px",
-        }
+        width: "100%",
     }
 }));
 
