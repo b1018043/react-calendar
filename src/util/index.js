@@ -10,4 +10,4 @@ export const getDayOfWeek=(raw_y,raw_m,d)=>{
     return (d+floor(26*(m+1)/10)+Y+floor(Y/4)+L)%7;
 }
 
-export const isLeapYear=(y)=>(y%4==0&&!(y%100==0&&y%400!==0));
+export const isLeapYear=(y)=>(y%4===0&&!(y%100===0&&y%400!==0));
