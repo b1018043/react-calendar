@@ -11,10 +11,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from "prop-types";
 
 
-const FormDialog=({open,onClose})=>{
+const FormDialog = ({ open, onClose,_date="",_task=""})=>{
     const dispatch=useDispatch();
-    const [task,setTask]=useState("");
-    const [date,setDate]=useState("");
+    const [task,setTask]=useState(_task);
+    const [date,setDate]=useState(_date);
     const handleTask=(e)=>{
         setTask(e.target.value);
     };
@@ -40,19 +40,30 @@ const FormDialog=({open,onClose})=>{
                     <TextField
                         margin="dense"
                         id="task"
+                        inputProps={{ "data-testid": "task" }}
                         label="予定"
                         type="text"
+                        value={task}
                         onChange={handleTask}
                     />
                     <br/>
                     <TextField
                         id="date"
+                        inputProps={{ "data-testid": "date" }}
                         type="date"                        
                         InputLabelProps={{
                             shrink: true,
                         }}
+                        value={date.split("/").join("-")}
                         onChange={handleDate}
                     />
+                    <TextField
+                        inputProps={{ "data-testid": "testDate" }}
+                        type="hidden"
+                        onChange={handleDate}
+                        value={date.split("/").join("-")}
+                    />
+                    {date.split("/").join("-")}
                     <DialogActions>
                         <Button color="primary" onClick={onClose}>Cancel</Button>
                         <Button color="primary" onClick={submitTask}>Submit</Button>
@@ -67,5 +78,6 @@ FormDialog.propTypes={
     open: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
 };
+
 
 export default FormDialog;

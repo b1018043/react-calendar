@@ -78,7 +78,7 @@ const TaskCard=({task,date,id})=>{
                 <IconButton>
                     <DetailsIcon />
                 </IconButton>
-                <IconButton onClick={dispatchRemoveTask(id)}>
+                <IconButton data-testid="delete" onClick={dispatchRemoveTask(id)}>
                     <DeleteForeverIcon/>
                 </IconButton>
             </CardActions>
