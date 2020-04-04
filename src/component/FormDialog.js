@@ -63,7 +63,6 @@ const FormDialog = ({ open, onClose,_date="",_task=""})=>{
                         onChange={handleDate}
                         value={date.split("/").join("-")}
                     />
-                    {date.split("/").join("-")}
                     <DialogActions>
                         <Button color="primary" onClick={onClose}>Cancel</Button>
                         <Button color="primary" onClick={submitTask}>Submit</Button>
