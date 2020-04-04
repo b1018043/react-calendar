@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
 import { makeStyles, colors,Typography } from "@material-ui/core";
 
 const useStyle=makeStyles(theme=>({
@@ -19,15 +20,51 @@ const useStyle=makeStyles(theme=>({
             background: colors.grey[100],
         },
         width: "100%",
+    },
+    TaskParent:{
+        width:"100%",
+        position:"relative",
+        margin:0,
+        paddingLeft:0,
+        [theme.breakpoints.down("xs")]:{
+            display:"none"
+        }
+    },
+    TaskItem:{
+        listStyleType: "none",
+        backgroundColor: colors.green[100],
+        overflow: "hidden",
+        marginLeft: "3%",
+        marginRight: "3%",
+        borderRadius: "5px"
+    },
+    TaskIcon:{
+        display:"inline",
+        [theme.breakpoints.up("sm")]:{
+            display:"none"
+        }
     }
 }));
 
-const Day=({day,events,active})=>{
+const Day=({day,events,active,onClick})=>{
     const classes=useStyle()
     return (
-        <div className={active?classes.Day:classes.DayNotMonth}>
+        <div className={active?classes.Day:classes.DayNotMonth} onClick={onClick}>
             <Typography>{day}</Typography>
-            {events.length}
+            <ul className={classes.TaskParent}>
+                {events.map((v, i) => {
+                    if(i>1) return null;
+                    return (
+                        <li key={i} className={classes.TaskItem}>{v.text}</li>
+                    )
+                })}
+                {events.length > 2 && <li className={classes.TaskItem}>other</li>}
+            </ul>
+            {events.length>0&&(
+                <div className={classes.TaskIcon}>
+                    <AssignmentLateIcon />
+                </div>
+            )}
         </div>
     );
 };

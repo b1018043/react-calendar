@@ -71,7 +71,7 @@ const TaskCard=({task,date,id})=>{
         <Card className={classes.root}>
             <CardContent className={classes.content}>
                 <StyledTypography>予定:{task}</StyledTypography>
-                <StyledTypography>日程:{date}</StyledTypography>
+                {date&&<StyledTypography>日程:{date}</StyledTypography>}
             </CardContent>
                 <div className={classes.grow}/>
             <CardActions>
