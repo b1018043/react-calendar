@@ -6,7 +6,6 @@ import {Card,CardContent,IconButton,Typography,
     ThemeProvider
 } from "@material-ui/core";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import DetailsIcon from '@material-ui/icons/Details';
 
 const StyledTypography=(props)=>{
     const theme=createMuiTheme();
@@ -75,9 +74,6 @@ const TaskCard=({task,date,id})=>{
             </CardContent>
                 <div className={classes.grow}/>
             <CardActions>
-                <IconButton>
-                    <DetailsIcon />
-                </IconButton>
                 <IconButton data-testid="delete" onClick={dispatchRemoveTask(id)}>
                     <DeleteForeverIcon/>
                 </IconButton>
